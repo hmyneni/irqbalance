@@ -270,7 +270,6 @@ gboolean scan(gpointer data)
 	log(TO_CONSOLE, LOG_INFO, "\n\n\n-----------------------------------------------------------------------------\n");
 	clear_work_stats();
 	parse_proc_interrupts();
-	parse_proc_stat();
 
 
 	/* cope with cpu hotplug -- detected during /proc/interrupts parsing */
@@ -289,7 +288,8 @@ gboolean scan(gpointer data)
 		clear_work_stats();
 		parse_proc_interrupts();
 		parse_proc_stat();
-	} 
+	} else
+		parse_proc_stat();
 
 	if (cycle_count)	
 		update_migration_status();
